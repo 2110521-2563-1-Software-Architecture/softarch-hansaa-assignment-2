@@ -1,0 +1,37 @@
+{
+  "name": "soft-arch-1-rest",
+  "version": "1.0.0",
+  "description": "",
+  "proxy": "http://localhost:5000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "listAllBooks": "node -e 'require(\"./client\").listAllBooks()'",
+    "getBookById": "node -e 'require(\"./client\").getBookById()'",
+    "insertBook": "node -e 'require(\"./client\").insertBook()'",
+    "deleteBookById": "node -e 'require(\"./client\").deleteBookById()'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "http-status": "^1.4.2",
+    "jest": "^26.4.0",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.29",
+    "mongoose-unique-validator": "^2.0.3",
+    "node-fetch": "^2.6.0",
+    "supertest": "^4.0.2",
+    "supertest-session": "^4.0.0",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
+  }
+}
