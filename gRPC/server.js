@@ -44,6 +44,11 @@ server.addService(booksProto.books.BookService.service, {
         bookStream.on('new_book', function(book){
             stream.write(book);
         });
+    },
+    insertmt: function(call, callback) {
+        var bookList = call.request.books;
+        books = books.concat(bookList);
+        callback(null, {});
     }
 });
 server.bind('0.0.0.0:50051',

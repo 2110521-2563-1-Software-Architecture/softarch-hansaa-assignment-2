@@ -44,13 +44,24 @@ function watchBooks() {
   });
 }
 
+function insertmt(count){
+  var bookList = [];
+  var book = { id: 1234, title: "title", author: "author" };
+  for (i=0;i<count;i++){
+    bookList.push(book)
+  }
+  client.insertmt(bookList, function (error, empty) {
+    printResponse(error, empty);
+  });
+}
+
 var processName = process.argv.shift();
 var scriptName = process.argv.shift();
 var command = process.argv.shift();
 
 if (command == "list") listBooks();
-else if (command == "insert")
-  insertBook(process.argv[0], process.argv[1], process.argv[2]);
+else if (command == "insert") insertBook(process.argv[0], process.argv[1], process.argv[2]);
 else if (command == "get") getBook(process.argv[0]);
 else if (command == "delete") deleteBook(process.argv[0]);
 else if (command == "watch") watchBooks();
+else if (command == "insertmt") insertmt(process.argv[0])
