@@ -2,7 +2,6 @@ const axios = require("axios");
 
 const BASE_URL = "http://localhost:5000/api";
 
-var args = process.argv;
 
 const listAllBooks = () => {
   const listAllBooksAPI = async () => {
@@ -11,17 +10,17 @@ const listAllBooks = () => {
   listAllBooksAPI();
 };
 
-const getBookById = () => {
+const getBookById = (id) => {
   const getBookByIdAPI = async (id) => {
     await axios
       .get(`${BASE_URL}/books/${id}`)
       .then((res) => console.log(res.data));
   };
-  const id = args[1];
   getBookByIdAPI(id);
 };
 
-const insertBook = () => {
+
+const insertBook = (id, title, author) => {
   const insertBookAPI = async (id, title, author) => {
     await axios
       .post(`${BASE_URL}/books`, {
@@ -31,24 +30,23 @@ const insertBook = () => {
       })
       .then((res) => console.log(res.data));
   };
-  const id = args[1];
-  const title = args[2];
-  const author = args[3];
   insertBookAPI(id, title, author);
 };
-const deleteBookById = () => {
+
+const deleteBookById = (id) => {
   const deleteBookByIdAPI = async (id) => {
     await axios
       .delete(`${BASE_URL}/books/${id}`)
       .then((res) => console.log(res.data));
   };
-  const id = args[1];
   deleteBookByIdAPI(id);
 };
 
-module.exports = {
-  listAllBooks,
-  getBookById,
-  insertBook,
-  deleteBookById,
-};
+var processName = process.argv.shift();
+var scriptName = process.argv.shift();
+var command = process.argv.shift();
+
+if (command == "list") listAllBooks();
+else if (command == "insert") insertBook(process.argv[0], process.argv[1], process.argv[2]);
+else if (command == "get") getBookById(process.argv[0]);
+else if (command == "delete") deleteBookById(process.argv[0]);
