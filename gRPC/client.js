@@ -44,15 +44,18 @@ function watchBooks() {
   });
 }
 
-function insertmt(count){
+function insertmt(count) {
   var bookList = [];
   var book = { id: 1234, title: "title", author: "author" };
-  for (i=0;i<count;i++){
+  for (i = 0; i < count; i++) {
     bookList.push(book)
   }
+  var start = new Date()
   client.insertmt(bookList, function (error, empty) {
     printResponse(error, empty);
   });
+  var end = new Date() - start;
+  console.log('response time: %d ms', end)
 }
 
 var processName = process.argv.shift();
