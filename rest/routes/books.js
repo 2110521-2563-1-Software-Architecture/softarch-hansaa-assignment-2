@@ -100,6 +100,31 @@ router.post(
 
 /**
  * @swagger
+ * /books/insert-many:
+ *    post:
+ *      description: Create a book
+ *      parameters:
+ *        - name: books
+ *          in: body
+ *          description: array of books to add
+ *          required: true
+ *          schema:
+ *            type: Book
+ *      responses:
+ *        '201':
+ *          description: Success
+ */
+router.post("/insert-many", [body("books").notEmpty()], async (req, res) => {
+  await Book.insertMany(req.body.books);
+  try {
+    res.status(201).json(true);
+  } catch (err) {
+    res.status(400).json({ errors: err });
+  }
+});
+
+/**
+ * @swagger
  * /books/{id}:
  *    delete:
  *     description: Delete a book by ID
