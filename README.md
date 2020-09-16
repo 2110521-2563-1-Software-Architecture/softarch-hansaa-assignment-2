@@ -12,6 +12,8 @@
 
 ![Graph](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20a.png?raw=true)
 
+![Graph2](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20b.png?raw=true)
+
 ## 2. Discussion of the results why one method is better the other in which scenarios. 
 
 ## 3. Comparison of the gRPC and REST API from the aspects of language neutral, ease of use, and performance.
