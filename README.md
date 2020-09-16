@@ -10,6 +10,8 @@
 
 ## 1. Graph showing the benchmarking results with the explanation of your experimental settings.
 
+![Graph](Image/Response Time (ms) of scenario a.png)
+
 ## 2. Discussion of the results why one method is better the other in which scenarios. 
 
 ## 3. Comparison of the gRPC and REST API from the aspects of language neutral, ease of use, and performance.
