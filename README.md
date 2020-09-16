@@ -26,11 +26,12 @@
 
 ทำการทดลองโดยให้ client ส่ง resquest ต่อไปเรื่อยๆ โดยไม่ต้องรอทำหลัง response ของ request ก่อนหน้า จากนำวัด response time ของ client
 
-![Graph2](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20c.png)
+![Graph3](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20c.png)
 
 
 ## 2. Discussion of the results why one method is better the other in which scenarios. 
-
+โดยปกติแล้ว gRPC จะมี performace ที่ดีในกรณีที่มีการส่ง request แบบ streaming อย่าง scenario a. แต่ถ้าเป็นกรณีที่เป็นการส่งหลายๆ request พร้อมกันอย่าง scenario b. และ c. REST จะมี performace ดีกว่า เหตุผลคือ gRPC มีการใช้ HTTP2 และ Protobuf ซึ่งรองรับการส่งข้อมูลแบบ streaming แต่ REST ใช้ HTTP 1.1 ซึ่งสนับสนุนเพียงแค่ request-response model 
+แต่อย่างไรก็ตาม ในการทดลองนี้จะเห็นว่า REST มี performace ที่ดีกว่าทุกๆ กรณี เนื่องจากในส่วนของ REST ได้มีการใช้ mongoDB ในการเก็บข้อมูล และมีการใช้ฟังก์ชันของ mongoDB ทำให้สามารถทำงานได้เร็วกว่า
 
 
 ## 3. Comparison of the gRPC and REST API from the aspects of language neutral, ease of use, and performance.
