@@ -44,28 +44,37 @@ function watchBooks() {
   });
 }
 
-function insertmt(count) {
+async function insertmt(count) {
   var bookList = [];
   var book = { id: 1234, title: "title", author: "author" };
   for (i = 0; i < count; i++) {
     bookList.push(book)
   }
   var start = new Date();
-  client.insertmt(bookList, function (error, empty) {
+  await client.insertmt(bookList, function (error, empty) {
     printResponse(error, empty);
   });
   var end = new Date() - start;
   console.log('response time: %d ms', end);
 }
 
-function concurrent(n){
-  var start = new Date();
+function cc(n){
   var book = { id: 1234, title: "title", author: "author" };
   for (i = 0; i < n; i++){
-    client.insert(book, function (error, empty){}); 
+    client.insert(book, function (error, empty){
+      printResponse(error, book);
+    }); 
   }
-  var responseTime = new Date() - start;
-  console.log(responseTime);  
+}
+
+function concurrent(n){
+  var start = new Date();
+  Promise.all([cc(n)])
+  .then(()=>{
+    var responseTime = new Date() - start;
+    console.log(responseTime); 
+  })
+  .catch(err => console.log(err));
 }
 
 var processName = process.argv.shift();
