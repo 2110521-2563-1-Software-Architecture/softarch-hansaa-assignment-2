@@ -1,3 +1,5 @@
+const { performance } = require("perf_hooks");
+
 var grpc = require("grpc");
 
 var booksProto = grpc.load("books.proto");
@@ -50,28 +52,27 @@ async function insertmt(count) {
   for (i = 0; i < count; i++) {
     bookList.push(book)
   }
-  var start = new Date();
+  var start = performance.now();
   await client.insertmt(bookList, function (error, empty) {
     printResponse(error, empty);
   });
-  var end = new Date() - start;
+  var end = performance.now() - start
   console.log('response time: %d ms', end);
 }
 
-
 async function concurrent(){
   var cc = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096];
-  var start = new Date();
   var book = { id: 1234, title: "title", author: "author" };
   var arr = [];
   var time = [];
+  var start = performance.now();
   for(i=0;i<cc.length;i++){
     for (j = 0; j < cc[i]; j++){
       arr.push(client.insert(book, function (error, empty){}))
     }
     await Promise.all(arr)
     .then(() => {
-      var responseTime = new Date() - start;
+      var responseTime = performance.now() - start
       time.push(responseTime);
       console.log(responseTime); 
     })
