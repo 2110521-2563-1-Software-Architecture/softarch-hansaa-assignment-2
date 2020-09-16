@@ -10,7 +10,22 @@
 
 ## 1. Graph showing the benchmarking results with the explanation of your experimental settings.
 
+#### scenario a. Single client with a small call to insert a book item, a bigger call to insert a list of multiple book items.
+
+ทำการ benchmarking โดยการวัด response time ของแต่ละ call ที่มีขนาดของ booklist ที่แตกต่างกัน โดยแต่ละ call จะทำการทดลอง 3 ครั้งและหาค่าเฉลี่ย
+
 ![Graph](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20a.png?raw=true)
+
+#### scenario b. Multiple clients with different kind of calls
+
+กำหนดจำนวน client ที่จะทำการทดลองในแต่ละครั้ง จากนั้น fork process เพื่อสร้าง client จากนั้นทำการวัด response time
+
+![Graph2](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20b.png?raw=true)
+
+#### scenario c. Vary the number of concurrent calls from 1 to 4096 calls
+
+
+
 
 ## 2. Discussion of the results why one method is better the other in which scenarios. 
 
