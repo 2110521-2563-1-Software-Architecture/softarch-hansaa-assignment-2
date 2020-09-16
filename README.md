@@ -35,9 +35,9 @@
 
 
 ## 3. Comparison of the gRPC and REST API from the aspects of language neutral, ease of use, and performance.
-Language neutral - gRPC has support by most popular languages and platforms but Rest has support from nearly every type of environment.
-Ease of use - In side writing code, gRPC is simpler and faster to implement compared to REST.
-Performance - In overrall performance, both servers are fairly simple.
+Language neutral - ภาษาและ platform ส่วนใหญ่รองรับ gRPC ในขณะที่ environment ส่วนใหญ่รองรับ Rest 
+Ease of use - gRPC ใช้งานและเขียนง่ายกว่า Rest
+Performance - ทางด้านประสิทธิภาพ ทั้งสองมีความใกล้เคียงกัน
 
 ## 4. Does your results comply with the results in https://medium.com/@bimeshde/grpc-vs-rest-performance-simplifiedfd35d01bbd4? How?
 
