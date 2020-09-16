@@ -119,6 +119,7 @@ router.post("/insert-many", [body("books").notEmpty()], async (req, res) => {
   try {
     res.status(201).json(true);
   } catch (err) {
+    console.log(err);
     res.status(400).json({ errors: err });
   }
 });
@@ -140,9 +141,27 @@ router.post("/insert-many", [body("books").notEmpty()], async (req, res) => {
  *       '200':
  *         description: Success
  */
-router.delete("/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   try {
     await Book.findOneAndDelete({ id: req.params.id });
+    res.status(200).json(true);
+  } catch (err) {
+    res.status(400).json({ errors: err });
+  }
+});
+
+/**
+ * @swagger
+ * /books/clean-up:
+ *    delete:
+ *     description: Delete all books (for testing purposes)
+ *     responses:
+ *       '200':
+ *         description: Success
+ */
+router.delete("/clean-up", async (req, res) => {
+  try {
+    await Book.deleteMany({});
     res.status(200).json(true);
   } catch (err) {
     res.status(400).json({ errors: err });
