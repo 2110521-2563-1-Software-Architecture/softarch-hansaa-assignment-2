@@ -58,23 +58,26 @@ async function insertmt(count) {
   console.log('response time: %d ms', end);
 }
 
-function cc(n){
-  var book = { id: 1234, title: "title", author: "author" };
-  for (i = 0; i < n; i++){
-    client.insert(book, function (error, empty){
-      printResponse(error, book);
-    }); 
-  }
-}
 
-function concurrent(n){
+async function concurrent(){
+  var cc = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096];
   var start = new Date();
-  Promise.all([cc(n)])
-  .then(()=>{
-    var responseTime = new Date() - start;
-    console.log(responseTime); 
-  })
+  var book = { id: 1234, title: "title", author: "author" };
+  var arr = [];
+  var time = [];
+  for(i=0;i<cc.length;i++){
+    for (j = 0; j < cc[i]; j++){
+      arr.push(client.insert(book, function (error, empty){}))
+    }
+    await Promise.all(arr)
+    .then(() => {
+      var responseTime = new Date() - start;
+      time.push(responseTime);
+      console.log(responseTime); 
+    })
   .catch(err => console.log(err));
+  }
+  
 }
 
 var processName = process.argv.shift();
@@ -87,4 +90,4 @@ else if (command == "get") getBook(process.argv[0]);
 else if (command == "delete") deleteBook(process.argv[0]);
 else if (command == "watch") watchBooks();
 else if (command == "insertmt") insertmt(process.argv[0])
-else if (command == "concurrent") concurrent(process.argv[0])
+else if (command == "concurrent") concurrent()
