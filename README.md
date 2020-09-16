@@ -40,3 +40,7 @@ Ease of use - In side writing code, gRPC is simpler and faster to implement comp
 Performance - In overrall performance, both servers are fairly simple.
 
 ## 4. Does your results comply with the results in https://medium.com/@bimeshde/grpc-vs-rest-performance-simplifiedfd35d01bbd4? How?
+
+![Graph4](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-2/blob/master/Image/Response%20Time%20(ms)%20of%20scenario%20c%20(log).png)
+
+จากกราฟข้างต้นจะเห็นได้ว่าเมื่อพิจารณากราฟกรณีการส่ง request แบบ concurrent ผลลัพธ์ในช่วงก่อน 512 requests จะไม่เหมือนกัน โดยใน medium ในช่วงต้นจะมี response time มาก และค่อยลดลงจนถึง 512 requests จากนั้นกราฟทั้งสองก็จะเริ่มคล้ายกัน โดย response time ก็จะเพิ่มขึ้นเมื่อ concurrent มากขึ้น  
